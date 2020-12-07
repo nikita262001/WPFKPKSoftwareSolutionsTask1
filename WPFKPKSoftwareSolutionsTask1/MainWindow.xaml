@@ -1,0 +1,85 @@
+﻿<Window x:Class="WPFKPKSoftwareSolutionsTask1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFKPKSoftwareSolutionsTask1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="550" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="DefaultListView" TargetType="ListView">
+            <!--<Setter Property="BorderThickness" Value="0"/>-->
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+        <Style TargetType="{x:Type ListViewItem}" x:Key="DefaultConTainer">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                        <StackPanel Orientation="Horizontal" x:Name="panel">
+                            <Image Source="{Binding ImagePath}" Height="50" Stretch="Uniform"/>
+                            <TextBlock Style="{StaticResource TextBlockDefault}" Text="{Binding Name}"/>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Column="0" Background="Transparent">
+            <TextBlock Style="{StaticResource TextBlockDefault}" Text="Бургер"/>
+        </Button>
+
+        <Button Grid.Column="1" Background="Transparent">
+            <TextBlock Style="{StaticResource TextBlockDefault}" Text="Недавно добавленные"/>
+        </Button>
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="1" Grid.ColumnSpan="3" Background="Transparent">
+                <TextBlock Style="{StaticResource TextBlockDefault}" Text="Профиль"/>
+            </Button>
+
+            <Button Grid.Row="2" Grid.ColumnSpan="3" Background="Transparent">
+                <TextBlock Style="{StaticResource TextBlockDefault}" Text="Бумага"/>
+            </Button>
+
+            <Button Grid.Row="3" Grid.ColumnSpan="3" Background="Transparent">
+                <TextBlock Style="{StaticResource TextBlockDefault}" Text="Картинки"/>
+            </Button>
+
+            <Button Grid.Row="4" Grid.ColumnSpan="3" Background="Transparent">
+                <TextBlock Style="{StaticResource TextBlockDefault}" Text="Настройки"/>
+            </Button>
+
+            <Button Grid.Row="5" Grid.ColumnSpan="3" Background="Transparent">
+                <TextBlock Style="{StaticResource TextBlockDefault}" Text="Питание"/>
+            </Button>
+        </Grid>
+        
+        <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Column="1" Grid.Row="1">
+            <StackPanel x:Name="stackPanelLists"/>
+        </ScrollViewer>
+
+        <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Column="2" Grid.RowSpan="2">
+            <StackPanel x:Name="stackComboLists"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
